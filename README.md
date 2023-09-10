@@ -58,6 +58,65 @@ password_file /etc/mosquitto/passfile
 listener 1883
 ```
 
+### El archivo docker-compose.yml contiene la siguiente configuracion:
+
+```
+version: '3'
+
+services:
+
+  hive:
+    image: hivemq/hivemq4
+    ports:
+      - 8080:8080
+      - 8000:8000
+      - 1884:1883
+
+  mosquito:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  esp32:
+    build: .
+    image: daoit/daoit-esp32-mqtt
+    depends_on:
+      - mosquito
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    volumes:
+      - .:/project
+    command: idf.py clean build flash --port /dev/ttyUSB0
+```
+De esta manera se pueden levantar simultaneamente los brokers Mosquitto y Hive en diferentes puertos para conectar el cliente ESP32 a uno de los brokers.
+
+### Modificar el codigo fuente del cliente ESP32
+
+En el codigo fuente del archivo app_main.c se pueden apreciar las siguientes lineas de configuracion:
+
+```
+#define USE_BROKER_HIVE 1
+
+#define BROKER_MOSQUITTO_URI "mqtt://192.168.0.3:1883"
+#define BROKER_HIVE_URI "mqtt://192.168.0.3:1884"
+
+#define MOSQUITO_USER_NAME              "usr1"
+#define MOSQUITO_USER_PASSWORD          "miPassword"
+
+```
+Notar que es necesario indicar la IP address del host donde correran los containers. Recordar que se esta utilizando la imagen de ESP-IDF docker solo para compilar y flashear, pero la ejecucion de la aplicacion sera en el ESP32 real, el cual se conectara al host que publica MQTT en la misma red.
+Ademas sera necesario indicar a que broker se desea conectar mediante la definicion de la directiva USE_BROKER_HIVE o USE_BROKER_MOSQUITTO.
+Por ultimo sera necesario configurar el SSID y password de la red WIFI en el archivo sdkconfig mediante la ejecucion del comando 
+
+```
+$ idf.py menuconfig
+```
+
 ### Ejemplo de la salida por consola al ejecutar la aplicación:
 
 ```
