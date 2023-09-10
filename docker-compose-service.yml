@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  # hive:
+  #   image: hivemq/hivemq4
+  #   ports:
+  #     - 8080:8080
+  #     - 8000:8000
+  #     - 1883:1883
+
+
+  mosquito:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log

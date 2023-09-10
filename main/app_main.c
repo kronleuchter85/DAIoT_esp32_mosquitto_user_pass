@@ -33,7 +33,7 @@
 static const char *TAG = "MQTT_EXAMPLE";
 
 // Set your local broker URI
-#define BROKER_URI "mqtt://192.168.68.54:1883"
+#define BROKER_URI "mqtt://192.168.0.3:1883"
 
 #define MOSQUITO_USER_NAME              "usr1"
 #define MOSQUITO_USER_PASSWORD          "miPassword"

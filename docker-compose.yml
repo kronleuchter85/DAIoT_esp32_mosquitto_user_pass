@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  # hive:
+  #   image: hivemq/hivemq4
+  #   ports:
+  #     - 8080:8080
+  #     - 8000:8000
+  #     - 1883:1883
+
+  mosquito:
+    image: eclipse-mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - ./mosquitto/config:/mosquitto/config
+      - ./mosquitto/data:/mosquitto/data
+      - ./mosquitto/log:/mosquitto/log
+
+  esp32:
+    build: .
+    image: daoit/daoit-esp32-mqtt
+    depends_on:
+      - mosquito
+    devices:
+      - "/dev/ttyUSB0:/dev/ttyUSB0"
+    volumes:
+      - .:/project
+    command: idf.py clean build flash --port /dev/ttyUSB0
+  
