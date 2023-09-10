@@ -33,7 +33,11 @@
 static const char *TAG = "MQTT_EXAMPLE";
 
 // Set your local broker URI
-#define BROKER_URI "mqtt://192.168.0.3:1883"
+
+#define USE_BROKER_HIVE 1
+
+#define BROKER_MOSQUITTO_URI "mqtt://192.168.0.3:1883"
+#define BROKER_HIVE_URI "mqtt://192.168.0.3:1884"
 
 #define MOSQUITO_USER_NAME              "usr1"
 #define MOSQUITO_USER_PASSWORD          "miPassword"
@@ -115,10 +119,17 @@ static void mqtt_event_handler(void *handler_args, esp_event_base_t base, int32_
 
 static void mqtt_app_start(void)
 {
+
     esp_mqtt_client_config_t mqtt_cfg = {
-        .uri = BROKER_URI,
+
+#if USE_BROKER_HIVE
+        .uri = BROKER_HIVE_URI,
+#elif USE_BROKER_MOSQUITTO
+        .uri = BROKER_MOSQUITTO_URI,
         .username = MOSQUITO_USER_NAME,
         .password = MOSQUITO_USER_PASSWORD,
+#endif
+
     };
 #if CONFIG_BROKER_URL_FROM_STDIN
     char line[128];

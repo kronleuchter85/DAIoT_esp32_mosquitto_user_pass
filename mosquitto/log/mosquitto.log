@@ -122,3 +122,39 @@
 1694345187: New connection from 192.168.0.11:55988 on port 1883.
 1694345187: Client ESP32_df3ED0 already connected, closing old connection.
 1694345187: New client connected from 192.168.0.11:55988 as ESP32_df3ED0 (p2, c1, k120, u'usr1').
+1694345434: mosquitto version 2.0.17 terminating
+1694345434: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1694345434: Error saving in-memory database, unable to open /mosquitto/data//mosquitto.db.new for writing.
+1694345434: Error: Permission denied.
+1694345532: mosquitto version 2.0.17 starting
+1694345532: Config loaded from /mosquitto/config/mosquitto.conf.
+1694345532: Warning: File /mosquitto/config/passfile has world readable permissions. Future versions will refuse to load this file.
+1694345532: Opening ipv4 listen socket on port 1883.
+1694345532: Opening ipv6 listen socket on port 1883.
+1694345532: mosquitto version 2.0.17 running
+1694345535: New connection from 192.168.0.11:55997 on port 1883.
+1694345535: New client connected from 192.168.0.11:55997 as ESP32_df3ED0 (p2, c1, k120, u'usr1').
+1694345561: mosquitto version 2.0.17 terminating
+1694345561: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1694345564: mosquitto version 2.0.17 starting
+1694345564: Config loaded from /mosquitto/config/mosquitto.conf.
+1694345564: Warning: File /mosquitto/config/passfile has world readable permissions. Future versions will refuse to load this file.
+1694345564: Opening ipv4 listen socket on port 1883.
+1694345564: Opening ipv6 listen socket on port 1883.
+1694345564: mosquitto version 2.0.17 running
+1694345593: mosquitto version 2.0.17 terminating
+1694345593: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1694345633: mosquitto version 2.0.17 starting
+1694345633: Config loaded from /mosquitto/config/mosquitto.conf.
+1694345633: Warning: File /mosquitto/config/passfile has world readable permissions. Future versions will refuse to load this file.
+1694345633: Opening ipv4 listen socket on port 1883.
+1694345633: Opening ipv6 listen socket on port 1883.
+1694345633: mosquitto version 2.0.17 running
+1694345843: mosquitto version 2.0.17 terminating
+1694345843: Saving in-memory database to /mosquitto/data//mosquitto.db.
+1694345854: mosquitto version 2.0.17 starting
+1694345854: Config loaded from /mosquitto/config/mosquitto.conf.
+1694345854: Warning: File /mosquitto/config/passfile has world readable permissions. Future versions will refuse to load this file.
+1694345854: Opening ipv4 listen socket on port 1883.
+1694345854: Opening ipv6 listen socket on port 1883.
+1694345854: mosquitto version 2.0.17 running

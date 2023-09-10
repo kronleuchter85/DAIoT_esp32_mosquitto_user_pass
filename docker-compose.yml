@@ -2,12 +2,12 @@ version: '3'
 
 services:
 
-  # hive:
-  #   image: hivemq/hivemq4
-  #   ports:
-  #     - 8080:8080
-  #     - 8000:8000
-  #     - 1883:1883
+  hive:
+    image: hivemq/hivemq4
+    ports:
+      - 8080:8080
+      - 8000:8000
+      - 1884:1883
 
   mosquito:
     image: eclipse-mosquitto
