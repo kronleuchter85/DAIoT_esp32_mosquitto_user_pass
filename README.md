@@ -26,14 +26,17 @@ al inicio del archivo, colocando los datos correctos del broker a utilizar.
 Crear un simple archivo de texto ingresando en cada linea los usuarios y sus contraseñas en texto plano.
 Que se vea del siguiente mood:
 
+```
 juan:juanPasswd
 pepito:pepinPass
+```
 
 guardar el archivo, por ejemplo como "passfile"
 
-luego ejecutar el siguiente comando: mosquitto_passwd -U passfile
-(tenemos que tener instalado el mosquitto-client)
-
+luego ejecutar el siguiente comando (tenemos que tener instalado el mosquitto-client): 
+```
+$ mosquitto_passwd -U passfile
+```
 una vez ejecutado el comando, si abrimos el archivo "passfile" se verá del siguiente modo:
 
 juan:$7$101$MKELi4uwM9Bytcy2$tfAMpvDhzECPRmazv/sKZ5o2/3lNPUoDb8LttKI1EVsJKhdL0BVzRIcUctFEF34GFAA+SitJ9j46NyZpdICQiA==
@@ -46,35 +49,14 @@ utilizando la opcion "password_file":
 
 
 ## El siguiente es el contenido del archivo mosquitto.conf que permite correr este ejemplo:
-
+```
 persistence true
-
 persistence_location /var/lib/mosquitto/
-
 log_dest file /var/log/mosquitto/mosquitto.log
-
 include_dir /etc/mosquitto/conf.d
-
-#allow_anonymous true
-
 password_file /etc/mosquitto/passfile
-
 listener 1883
-
-#listener 8883
-
-#cafile /etc/mosquitto/certs/ca.crt
-
-#keyfile /etc/mosquitto/certs/server.key
-
-#certfile /etc/mosquitto/certs/server.crt
-
-#require_certificate true
-
-#use_identity_as_username true
-
-
-
+```
 
 ### Ejemplo de la salida por consola al ejecutar la aplicación:
 
