@@ -1,7 +1,8 @@
 # ESP-MQTT Mosquitto User y Password
 
-Este ejemplo conecta el ESP32 al broker Mosquitto utilizando usuario y contraseña
-
+Este ejemplo conecta el ESP32 a:
+- el broker Mosquitto utilizando usuario y contraseña.
+- el broker Hive MQTT sin autenticacion (dado que la extension de seguridad es de licencia comercial)
 
 
 ## Configuracion SSID y PASS WiFi
@@ -38,14 +39,13 @@ luego ejecutar el siguiente comando (tenemos que tener instalado el mosquitto-cl
 $ mosquitto_passwd -U passfile
 ```
 una vez ejecutado el comando, si abrimos el archivo "passfile" se verá del siguiente modo:
-
+```
 juan:$7$101$MKELi4uwM9Bytcy2$tfAMpvDhzECPRmazv/sKZ5o2/3lNPUoDb8LttKI1EVsJKhdL0BVzRIcUctFEF34GFAA+SitJ9j46NyZpdICQiA==
 pepito:$7$101$tIVbHwY3dhGAfGGS$/IGerQHGTWsQIw2bK0POJYVMNZOwOlMk+Uxl8T6c8uKa5vKJAn5kWJMLFtNRd8YTS5WDe+cJdzsEPsMjNyY9Dw==
+```
 
 En el archivo mosquitto.conf, se incluye el path a este archivo que contiene los usuarios y sus contraseñas
-utilizando la opcion "password_file":
-(password_file /etc/mosquitto/passfile)
-
+utilizando la opcion "password_file" (password_file /etc/mosquitto/passfile)
 
 
 ## El siguiente es el contenido del archivo mosquitto.conf que permite correr este ejemplo:
